@@ -10,25 +10,29 @@ botones.forEach(boton => {
         } 
         
         else if (botonApretado === "del") {
-            try { pantalla.textContent.length ==1 }{
+            if (pantalla.textContent.length === 1) {
                 pantalla.textContent = "0"
-            } else{
-                pantalla.textContent = pantalla.textContent.slice(0,-1)
+            } else {
+                pantalla.textContent = pantalla.textContent.slice(0, -1)
             }
-        } else if (botonApretado == "="){
-            try{
-                pantalla.textContent =eval(pantalla.textContent)
-            }catch (error){
+        } else if (botonApretado === "=") {
+            try {
+                pantalla.textContent = eval(pantalla.textContent)
+            } catch (error) {
                 pantalla.textContent = "Error"
             }
-
-        } else if(botonApretado == "%"){
-            try{
-                pantalla.textContent = eval(pantalla.textContent)*0.01
-            }catch (error){
-            pantalla.textContent = "Error!"
+        } else if (botonApretado === "%") {
+            try {
+                pantalla.textContent = eval(pantalla.textContent) * 0.01
+            } catch (error) {
+                pantalla.textContent = "Error!"
+            }
+        } else {
+            if (pantalla.textContent === "0" || pantalla.textContent === "Error!") {
+                pantalla.textContent = botonApretado
+            } else {
+                pantalla.textContent += botonApretado
             }
         }
-        pantalla.textContent = pantalla.textContent + botonApretado
-    }
     })
+})
